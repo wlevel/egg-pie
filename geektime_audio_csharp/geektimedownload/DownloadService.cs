@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,13 +11,8 @@ namespace geektimedownload
 {
 	public static class DownloadService
 	{
-		public static async Task<IConfigurationBuilder> Download(this IConfigurationBuilder builder)
-		{
-			return await Download(builder, "");
-		}
 
-
-		public static async Task<IConfigurationBuilder> Download(this IConfigurationBuilder builder, string inputPath)
+		public static void Download(string inputPath)
 		{
 			var filePaths = new List<string>();
 			DirectoryInfo folder = new DirectoryInfo(inputPath);
@@ -35,7 +29,7 @@ namespace geektimedownload
 			});
 			Console.WriteLine($"Download complete for course: {Path.GetFileNameWithoutExtension(inputPath)} ! execution time {Math.Round(sw.Elapsed.TotalSeconds, 2)} seconds");
 
-			return builder;
+
 		}
 
 
